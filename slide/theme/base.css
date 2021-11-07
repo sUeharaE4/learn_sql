@@ -1,0 +1,18 @@
+/* @theme base */
+@import 'default';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+h1{
+    position: absolute;
+    left: 50px; top: 25px;
+}
+footer {
+  text-align: left;
+}
+section {
+  font-family: 'Noto Sans JP', serif;
+}
+section::after {
+  font-weight: lighter;
+  text-shadow: 1px 1px 0 #fff;
+  content: 'Page ' attr(data-marpit-pagination) ' / ' attr(data-marpit-pagination-total);
+}
