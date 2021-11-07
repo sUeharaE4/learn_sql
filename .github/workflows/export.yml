@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "slide_src/**"
 jobs:
   export:
     runs-on: ubuntu-latest
@@ -34,3 +36,14 @@ jobs:
           --theme ${{env.THEME_CSS}}
           -o ${{env.OUTPUT_DIR_BASE}}/pptx/
           --allow-local-files
+      - name: Archive html
+        uses: actions/upload-artifact@v2
+        with:
+          name: html
+          path: ${{env.OUTPUT_DIR_BASE}}/html
+      - name: Archive pptx
+        uses: actions/upload-artifact@v2
+        with:
+          name: pptx
+          path: ${{env.OUTPUT_DIR_BASE}}/pptx
+
