@@ -37,10 +37,10 @@ jobs:
           -o ${{env.OUTPUT_DIR_BASE}}/pptx/
           --allow-local-files
       - name: Deploy website
-            uses: peaceiris/actions-gh-pages@v3
-            with:
-              github_token: ${{ secrets.GITHUB_TOKEN }}
-              publish_dir: ${{env.OUTPUT_DIR_BASE}}/html
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{env.OUTPUT_DIR_BASE}}/html
       - name: Archive html
         uses: actions/upload-artifact@v2
         with:
