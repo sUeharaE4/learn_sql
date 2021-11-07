@@ -2,7 +2,7 @@
 marp: true
 theme: base
 paginate: true
-footer: SQL勉強会
+footer: SQL 勉強会 SELECT, FROM and LIMIT
 ---
 
 # SQL 勉強会 SELECT, FROM and LIMIT
