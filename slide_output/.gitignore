@@ -1,2 +1,5 @@
-*
 !.gitignore
+html/*
+!/html/index.html
+pptx/*
+pdf/*
