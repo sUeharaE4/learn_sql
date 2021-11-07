@@ -1,0 +1,3 @@
+INPUT_DIR=slide_src
+THEME_CSS=slide_src/theme/base.css
+OUTPUT_DIR_BASE=slide_output
