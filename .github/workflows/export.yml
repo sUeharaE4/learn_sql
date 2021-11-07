@@ -16,7 +16,7 @@ jobs:
           done<./config
       - name: Create output base dir
         run: |
-          mkdir ${{env.OUTPUT_DIR_BASE}}
+          mkdir -p ${{env.OUTPUT_DIR_BASE}}
           chmod 777 -R $_
       - name: Export HTML
         run: docker run --rm --init -v "$(pwd):/home/marp/app/"
