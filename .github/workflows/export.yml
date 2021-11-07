@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - "slide_src/**"
+  workflow_dispatch:
 jobs:
   export:
     runs-on: ubuntu-latest
