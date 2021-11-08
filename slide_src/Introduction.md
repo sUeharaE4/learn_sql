@@ -38,3 +38,51 @@ PostgreSQLのサンプルデータセットを使っているのでデータ量�
 |JOIN|テーブルの結合について記載します|
 |INSERT, UPDATE and DELETE|READ以外のCRUD操作についてザックリ記載します|
 
+---
+
+# 環境構築
+PostgreSQLをインストールして起動しておいてください。Dockerで準備するなら下記コマンドで良いと思います。永続化するかどうかは任せます。
+開発環境のPostgreSQLを使う場合は予めdumpを取って今の状態に戻せるようにしておきましょう。おまけに書いておきます。
+
+```bash
+sudo docker run --rm -d \
+     -p 5432:5432 \
+     -v postgres-tmp:$PWD/data \
+     -e POSTGRES_HOST_AUTH_METHOD=trust \
+     postgres:12-alpine
+```
+
+サンプルデータは公式サイトからダウンロードしてzipを展開しておいてください。
+https://www.postgresqltutorial.com/postgresql-sample-database/
+
+---
+
+# 環境構築
+
+サンプルデータを展開するとtarファイルが得られます。このtarファイルとpg_restoreを使って勉強会で利用するテーブルを作りましょう。ただ、最初のうちはこのデータセット使いますが、時系列のサンプルデータも追加するかもしれません。
+
+まずはdvdrentalデータベースを作成します。psqlでpostgresに接続しましょう。
+```bash
+psql -h localhost -p 5432 -U postgres
+```
+
+接続できたらデータベースを新たに作成します。
+```sql
+CREATE DATABASE dvdrental;
+\q
+```
+
+---
+# 環境構築
+
+次にレストアしてください。tarがカレントに存在する前提で書いているのでコマンド実行場所に合わせて適宜修正してください。これでデータの準備は完了です。
+
+```bash
+pg_restore -h localhost -p 5432 -U postgres -d dvdrental dvdrental.tar
+```
+これ以降は作成したdvdrentalデータベースを使用するので下記コマンドで接続してください。
+
+```bash
+psql -h localhost -p 5432 -U postgres -d dvdrental
+```
+
