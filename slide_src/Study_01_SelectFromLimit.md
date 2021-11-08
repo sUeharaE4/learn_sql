@@ -166,11 +166,9 @@ SELECTで取得するレコードのうち指定した件数だけ出力する�
 
 ```sql
 SELECT
-  actor_id
-  , first_name
-  , last_name
+  *
 FROM
-  actor_info
+  category
 LIMIT
   5
 ;
@@ -187,7 +185,7 @@ LIMIT
 |4|Classics    | 2006-02-15 09:46:27 |
 |5|Comedy      | 2006-02-15 09:46:27 |
 
-このように取得件数が制限することが出来ます。
+このように取得件数を制限することが出来ます。
 
 ---
 # LIMIT 注意事項
