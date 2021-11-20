@@ -33,9 +33,9 @@ PostgreSQLのサンプルデータセットを使っているのでデータ量�
 |---|---|
 |SELECT, FROM and LIMIT|一番基本となるDBからデータを取得する方法について記載します|
 |WHERE(比較, IN, LIKE, etc)|特定の条件で取得データにフィルターをかける方法について記載します|
-|GROUP BY, HAVING and COUNT|何かしらのグループ毎に集計などの操作を行う方法について記載します|
 |WITH and AS|サブクエリやサブクエリを共通化して1つのSQL内で使い回す方法について記載します|
 |JOIN|テーブルの結合について記載します|
+|GROUP BY, HAVING and COUNT|何かしらのグループ毎に集計などの操作を行う方法について記載します|
 |INSERT, UPDATE and DELETE|READ以外のCRUD操作についてザックリ記載します|
 
 ---
@@ -86,3 +86,7 @@ pg_restore -h localhost -p 5432 -U postgres -d dvdrental dvdrental.tar
 psql -h localhost -p 5432 -U postgres -d dvdrental
 ```
 
+---
+
+# おまけ
+dumpの作成方法と復元方法を記載する
