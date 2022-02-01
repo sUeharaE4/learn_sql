@@ -32,12 +32,12 @@ SELECT 1, 'str needs quote';
 ```sql
 SELECT
   CURRENT_DATE AS date_format
-  , CURRENT_TIME AS datetime_format
-  , CURRENT_TIMESTAMP AS timestamp_format -- NOW()とCURRENT_TIMESTAMPは同等;
+  , CURRENT_TIME AS time_format
+  , CURRENT_TIMESTAMP AS timestamp_format; -- NOW()とCURRENT_TIMESTAMPは同等
 ```
 
 ```
- date_format |  datetime_format   |       timestamp_format
+ date_format |    time_format     |       timestamp_format
 -------------+--------------------+-------------------------------
  2021-11-06  | 06:29:47.568009+00 | 2021-11-06 06:29:47.568009+00
 (1 row)
@@ -192,7 +192,7 @@ LIMIT
 
 ここで非常に大事な注意ですが、LIMITは今後扱うWHEREやORDER BYなど諸々の操作の後に作用します。LIMITを追加したから指定した件数だけ取得して並び替えできてるよねと思わないように注意してください。LIMITはあくまでSELECTするデータが確定してから取得する件数を制限するためのものです。複雑なSQLの最後にLIMITをつけてもDBに発行されるクエリが軽くなるわけではありません。クライアント側が受け取るデータが少なくてクライアント側にとって優しくなるだけでDBには優しくなっていないので注意してください。
 
-とりあえず100件だけ取得してデータを眺めてみたいけど、ソートもしたいんだよって場合はます100件取得して、その後ソートするようにしてあげましょう。その方法はまた別の会で扱います。
+とりあえず100件だけ取得してデータを眺めてみたいけど、ソートもしたいんだよって場合はまず100件取得して、その後ソートするようにしてあげましょう。その方法はまた別の会で扱います。
 
 ---
 
@@ -225,7 +225,7 @@ select relname, n_live_tup from pg_stat_user_tables where schemaname='public';
 ```sql
 SELECT
   LOCALTIMESTAMP AS local_time
-  , CURRENT_TIMESTAMP at time zone 'UTC' AS utc_time;
+  , CURRENT_TIMESTAMP AT TIME ZONE 'UTC' AS utc_time;
 ```
 
 ## timezone確認
