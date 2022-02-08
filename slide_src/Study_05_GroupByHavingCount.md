@@ -26,7 +26,7 @@ GROUP BY
 ```
 
 ```sql
- store_id | customers 
+ store_id | customers
 ----------+-----------
         1 |       326
         2 |       273
@@ -62,7 +62,7 @@ SELECT
   c.name
   ,AVG(f.LENGTH)
 FROM
-  film f -- テーブル名にも別名をつけることが出来ます。_区切りの戦闘文字だけ取ることが多いですかね。
+  film f -- テーブル名にも別名をつけることが出来ます。_区切りの先頭文字だけ取ることが多いですかね。
   INNER JOIN
     film_category fc -- テーブルの別名をつけるときは AS は省略されることが多い気がします。
   ON  f.film_id = fc.film_id
@@ -155,10 +155,10 @@ https://www.postgresql.jp/document/10/html/sql-select.html
 
 日次で集計するサンプル。
 ```sql
-SELECT 
-  DATE(payment_date) AS paid_date, 
+SELECT
+  DATE(payment_date) AS paid_date,
   SUM(amount) sum
-FROM 
+FROM
   payment
 WHERE
   payment_date > '2007-01-31'
