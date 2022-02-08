@@ -91,4 +91,22 @@ psql -h localhost -p 5432 -U postgres -d dvdrental
 ---
 
 # おまけ
-dumpの作成方法と復元方法を記載する
+今回の勉強会ではデータベースとは何か、RDBとは何かは扱わないのでこの辺のことを知りたい方は各自調べてみたり mixi さんのデータベース研修や AI SHIFT さんのSQL研修などを参照してください。
+https://speakerdeck.com/mixi_engineers/21-database-training
+https://www.ai-shift.co.jp/techblog/1980
+
+また、PostgreSQLのアーキテクチャについてはこちらが詳しいです。https://www.fujitsu.com/jp/products/software/resources/feature-stories/postgres/article-index/architecture-overview/
+
+---
+
+# おまけ
+psqlでDBのdumpを作成・復元する方法の一例です。いくつかオプションや選択肢(pg_dump, pg_dumpallでdumpしてpsql, pg_restoreで復元)がいくつかあるので自分の環境に合うものを調べて使ってください。特にplainで出力するとだいぶ容量とるので注意です。ちゃんと出来てるかわかりやすいですが。
+
+```bash
+pg_dump -h localhost -p 5432 -U postgres -F plain -v -f mydb_dump.sql mydb 2> mydb_dump.log
+```
+
+復元する際には空のデータベースが必要です。既に同じ名前でデータベースがある場合はDROPしてCREATEし直しましょう。
+```bash
+psql -h localhost -p 5432 -U postgres mydb -f mydb_dump.sql 2> mydb_dump_restore.log
+```
